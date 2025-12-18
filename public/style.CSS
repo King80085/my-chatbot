@@ -1,0 +1,118 @@
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 40px auto;
+      background: #f6f6f8;
+    }
+    #chat {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      min-height: 300px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      overflow-y: auto;
+    }
+    .msg {
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 8px;
+      max-width: 80%;
+      word-wrap: break-word;
+    }
+    .user {
+      background: #dbeafe;
+      text-align: right;
+      margin-left: auto;
+    }
+    .bot {
+      background: #e5e7eb;
+      text-align: left;
+      margin-right: auto;
+    }
+    #inputBox {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+    }
+    textarea {
+      flex: 1;
+      padding: 10px;
+      border-radius: 8px;
+      resize: none;
+    }
+    button {
+      padding: 10px 20px;
+      border-radius: 8px;
+      background: #2563eb;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .typing {
+  font-style: italic;
+  color: #bbb;
+  margin: 8px;
+}
+
+.typing span {
+  animation: blink 1.4s infinite both;
+}
+
+.typing span:nth-child(2) {
+  animation-delay: .2s;
+}
+
+.typing span:nth-child(3) {
+  animation-delay: .4s;
+}
+
+@keyframes blink {
+  0% { opacity: .2; }
+  20% { opacity: 1; }
+  100% { opacity: .2; }
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5; /* your background color */
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #04192d; /* brand color */
+  color: white;
+}
+
+.header .logo {
+  width: 50px;
+  height: 50px;
+  margin-right: 15px;
+  border-radius: 8px;
+}
+
+.chat-container {
+  max-width: 600px;
+  margin: 20px auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 20px;
+}
+
+.message.user {
+  background-color: #1e90ff; /* user bubble color */
+  color: white;
+  text-align: right;
+}
+
+.message.bot {
+  background-color: #e0e0e0; /* bot bubble color */
+  color: #333;
+  text-align: left;
+}
+

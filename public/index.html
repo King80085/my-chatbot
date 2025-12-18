@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Business AI Assistant</title>
+
+  <link rel="stylesheet" href="style.CSS">
+
+</head>
+<body>
+
+  <h2>
+<h1>AI Sales Assistant</h1>
+<p>We help you grow your business 🚀</p>
+
+</h2>
+  <div id="chat"></div>
+
+  <div id="inputBox">
+    <textarea id="message" placeholder="Ask about services, pricing, or support..."></textarea>
+    <button id="send">Send</button>
+  </div>
+
+  <div id="typing" class="typing" style="display:none;">
+    🤖 Bot is typing<span>.</span><span>.</span><span>.</span>
+  </div>
+
+  <div class="header">
+   <img src="Screenshot_20251218_081232_Chrome.jpg" alt="Company Logo" class="logo">
+  <h1>AI-_-GROW</h1>
+  </div>
+   
+
+
+
+  <script>
+    const chatBox = document.getElementById("chat");
+    const input = document.getElementById("message");
+    const sendBtn = document.getElementById("send");
+    const typing = document.getElementById("typing");
+
+    function showTyping() {
+      typing.style.display = "block";
+    }
+
+    function hideTyping() {
+      typing.style.display = "none";
+    }
+
+
+    function addMessage(text, role) {
+      const div = document.createElement("div");
+      div.className = "msg " + role;
+      div.textContent = text;
+      chatBox.appendChild(div);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    sendBtn.addEventListener("click", sendMessage);
+    input.addEventListener("keypress", function(e){
+      if(e.key === "Enter" && !e.shiftKey){
+        e.preventDefault();
+        sendMessage();
+      }
+    });
+
+    async function sendMessage() {
+      const text = input.value.trim();
+      if (!text) return;
+
+      addMessage(text, "user");
+      showTyping();
+
+      setTimeout(async () => {
+    try {
+     const response = await fetch("/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: text })
+      });
+
+    const data = await response.json();
+
+    hideTyping();
+    addMessage(data.reply, "bot");
+
+      } catch (err) {
+       hideTyping();
+       addMessage("⚠️ Connection error.", "bot");
+      }
+     }, 800); // typing delay
+    }
+
+  </script>
+
+</body>
+</html>
